@@ -12,17 +12,22 @@ class MelonType(object):
 
         self.pairings = []
 
-        # Fill in the rest
-
+        self.code = code
+        self.first_harvest = first_harvest
+        self.color = color
+        self.is_seedless = is_seedless
+        self.is_bestseller = is_bestseller
+        self.name = name
+ 
     def add_pairing(self, pairing):
         """Add a food pairing to the instance's pairings list."""
 
-        # Fill in the rest
+        self.pairings.append(pairing)
 
     def update_code(self, new_code):
         """Replace the reporting code with the new_code."""
 
-        # Fill in the rest
+        self.code.replace(new_code)
 
 
 def make_melon_types():
@@ -30,19 +35,41 @@ def make_melon_types():
 
     all_melon_types = []
 
-    # Fill in the rest
+    muskmelon = MelonType('musk', 1998, 'green', True, True, 'muskmelon')
+    muskmelon.add_pairing('mint')
+    all_melon_types.append(muskmelon)
 
+    casaba = MelonType('cas', 2003, 'orange', True, False, 'casaba')
+    casaba.add_pairing('strawberries')
+    casaba.add_pairing('mint')
+    all_melon_types.append(casaba)
+
+    crenshaw = MelonType('cren', 1996, 'green', False, False, 'crenshaw')
+    crenshaw.add_pairing('proscuitto')
+    all_melon_types.append(crenshaw)
+
+    yellow_watermelon = MelonType('yw', 2013, 'yellow', False, True, 'yellow watermelon')
+    yellow_watermelon.add_pairing('ice cream')
+    all_melon_types.append(yellow_watermelon)
+    # print(all_melon_types)
     return all_melon_types
+
 
 def print_pairing_info(melon_types):
     """Prints information about each melon type's pairings."""
+    for melon in melon_types:
+        for pairing in melon.pairings:
 
-    # Fill in the rest
+            print(f"{melon.name} pairs with {pairing}.")
+
 
 def make_melon_type_lookup(melon_types):
     """Takes a list of MelonTypes and returns a dictionary of melon type by code."""
-
-    # Fill in the rest
+    
+    melons = {}
+    for melon in melon_types:
+        melons[melon.code] = melon
+    print(melons)
 
 ############
 # Part 2   #
